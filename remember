@@ -1,0 +1,13 @@
+#!/bin/bash
+filename=`basename ${0}`
+cp $HOME"/${filename}.txt" $HOME"/temp"
+if { python3 /usr/bin/${filename}.py "$@"; }
+then
+rm $HOME"/temp/${filename}.txt"
+exit 0
+else
+rm $HOME"/${filename}.txt"
+mv $HOME"/temp/${filename}.txt" $HOME
+exit -1
+fi
+
